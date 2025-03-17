@@ -1,0 +1,51 @@
+{
+    "invoice_number": "INV-36719",
+    "date": "16/03/2025 21:57:43",
+    "customer": {
+        "name": "Nome Exemplo",
+        "phone": "(12)12345-6789",
+        "email": "email@exemplo.com"
+    },
+    "items": [
+        {
+            "name": "Sabonete (90g)",
+            "price": 3.2,
+            "quantity": 5,
+            "total": 16.0
+        },
+        {
+            "name": "Shampoo (350ml)",
+            "price": 18.9,
+            "quantity": 1,
+            "total": 18.9
+        },
+        {
+            "name": "Papel higi\u00eanico (4 rolos)",
+            "price": 9.5,
+            "quantity": 2,
+            "total": 19.0
+        },
+        {
+            "name": "Detergente l\u00edquido (500ml)",
+            "price": 3.8,
+            "quantity": 3,
+            "total": 11.399999999999999
+        },
+        {
+            "name": "Sab\u00e3o em p\u00f3 (1kg)",
+            "price": 12.9,
+            "quantity": 2,
+            "total": 25.8
+        }
+    ],
+    "subtotal": 91.1,
+    "discount": {
+        "percent": 15.0,
+        "amount": 13.665
+    },
+    "tax": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "total": 77.435
+}

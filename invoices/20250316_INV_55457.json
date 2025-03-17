@@ -1,0 +1,33 @@
+{
+    "invoice_number": "INV-55457",
+    "date": "16/03/2025 21:25:01",
+    "customer": {
+        "name": "awdw",
+        "phone": "123123",
+        "email": "dwas@as.com"
+    },
+    "items": [
+        {
+            "name": "Monitor",
+            "price": 100.0,
+            "quantity": 1,
+            "total": 100.0
+        },
+        {
+            "name": "OOOOO",
+            "price": 50.0,
+            "quantity": 1,
+            "total": 50.0
+        }
+    ],
+    "subtotal": 150.0,
+    "discount": {
+        "percent": 50.0,
+        "amount": 75.0
+    },
+    "tax": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "total": 75.0
+}

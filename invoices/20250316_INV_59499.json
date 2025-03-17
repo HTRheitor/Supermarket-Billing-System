@@ -1,0 +1,33 @@
+{
+    "invoice_number": "INV-59499",
+    "date": "16/03/2025 21:04:26",
+    "customer": {
+        "name": "Heitor",
+        "phone": "12997105051",
+        "email": "heitor@gmail.com"
+    },
+    "items": [
+        {
+            "name": "Detergente",
+            "price": 2.69,
+            "quantity": 2,
+            "total": 5.38
+        },
+        {
+            "name": "asdwadas",
+            "price": 23.0,
+            "quantity": 12,
+            "total": 276.0
+        }
+    ],
+    "subtotal": 281.38,
+    "discount": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "tax": {
+        "percent": 10.0,
+        "amount": 28.138
+    },
+    "total": 309.518
+}

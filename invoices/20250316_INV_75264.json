@@ -1,0 +1,33 @@
+{
+    "invoice_number": "INV-75264",
+    "date": "16/03/2025 21:08:14",
+    "customer": {
+        "name": "Ana",
+        "phone": "99999999",
+        "email": "email@gmail.com"
+    },
+    "items": [
+        {
+            "name": "Detergente",
+            "price": 2.39,
+            "quantity": 2,
+            "total": 4.78
+        },
+        {
+            "name": "Detergente",
+            "price": 2.69,
+            "quantity": 2,
+            "total": 5.38
+        }
+    ],
+    "subtotal": 10.16,
+    "discount": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "tax": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "total": 10.16
+}

@@ -1,0 +1,63 @@
+{
+    "invoice_number": "INV-88720",
+    "date": "16/03/2025 21:47:07",
+    "customer": {
+        "name": "w",
+        "phone": "(12)12312-3123",
+        "email": "asd@gmail.com"
+    },
+    "items": [
+        {
+            "name": "a",
+            "price": 10.0,
+            "quantity": 1,
+            "total": 10.0
+        },
+        {
+            "name": "b",
+            "price": 10.0,
+            "quantity": 1,
+            "total": 10.0
+        },
+        {
+            "name": "c",
+            "price": 10.0,
+            "quantity": 1,
+            "total": 10.0
+        },
+        {
+            "name": "a",
+            "price": 10.0,
+            "quantity": 1,
+            "total": 10.0
+        },
+        {
+            "name": "b",
+            "price": 10.0,
+            "quantity": 1,
+            "total": 10.0
+        },
+        {
+            "name": "a",
+            "price": 12.0,
+            "quantity": 1,
+            "total": 12.0
+        },
+        {
+            "name": "222",
+            "price": 22.0,
+            "quantity": 1,
+            "total": 22.0
+        }
+    ],
+    "subtotal": 84.0,
+    "discount": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "tax": {
+        "percent": 0.0,
+        "amount": 0.0
+    },
+    "total": 84.0
+}

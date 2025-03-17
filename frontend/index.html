@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Faturamento Comercial</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <header>
+                <div class="logo-title">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <div>
+                        <h1>SISTEMA DE FATURAMENTO</h1>
+                        <p>Comercial</p>
+                    </div>
+                </div>
+                <div class="invoice-info">
+                    <div class="badge">
+                        <span class="badge-title">Fatura Nº</span>
+                        <span id="invoiceNumber" class="badge-value">{{
+                            invoice_number }}</span>
+                    </div>
+                    <div class="date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span id="currentDate">{{ current_date }}</span>
+                    </div>
+                </div>
+            </header>
+
+            <div id="alertArea"></div>
+
+            <div class="main-content">
+
+                <div class="left-panel">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-user"></i>
+                            <h2 class="card-title">Detalhes do Cliente</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-user-tag"></i>
+                                        Nome do Cliente
+                                    </label>
+                                    <input type="text" id="customerName"
+                                        class="form-control"
+                                        placeholder="Nome completo">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-phone"></i>
+                                        Telefone
+                                    </label>
+                                    <input type="text" id="customerPhone"
+                                        class="form-control"
+                                        placeholder="(00) 00000-0000">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        Email
+                                    </label>
+                                    <input type="email" id="customerEmail"
+                                        class="form-control"
+                                        placeholder="email@exemplo.com">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-box-open"></i>
+                            <h2 class="card-title">Detalhes do Produto</h2>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="product-list-container">
+                                <div class="product-list">
+                                    <div class="product-header">
+                                        <span>Produto</span>
+                                        <span>Preço (R$)</span>
+                                        <span>Qtd</span>
+
+                                    </div>
+                                    <div id="productItems"
+                                        class="product-items"></div>
+                                    <div id="productItems"
+                                        class="product-items">
+
+                                    </div>
+                                </div>
+                                <div class="empty-cart" id="emptyCart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <p>Nenhum item adicionado</p>
+                                    <span>Os itens aparecerão aqui quando
+                                        adicionados</span>
+                                </div>
+                            </div>
+
+                            <div class="form-divider">
+                                <span>Adicionar Novo Item</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-tag"></i>
+                                        Nome do Produto
+                                    </label>
+                                    <input type="text" id="productName"
+                                        class="form-control"
+                                        placeholder="Ex: Monitor LED">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-dollar-sign"></i>
+                                        Preço Unitário (R$)
+                                    </label>
+                                    <input type="number" id="productPrice"
+                                        class="form-control" min="0" step="0.01"
+                                        placeholder="0,00">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fa-solid fa-cubes"></i>
+                                        Quantidade
+                                    </label>
+                                    <div class="quantity-input">
+                                        <button class="qty-btn"
+                                            id="decreaseQty">-</button>
+                                        <input type="number"
+                                            id="productQuantity"
+                                            class="form-control" min="1"
+                                            value="1">
+                                        <button class="qty-btn"
+                                            id="increaseQty">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="addItemBtn" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i>
+                            ADICIONAR ITEM
+                        </button>
+                        <button id="generateBillBtn" class="btn btn-success">
+                            <i class="fa-solid fa-file-invoice"></i>
+                            GERAR FATURA
+                        </button>
+                        <button id="clearBtn" class="btn btn-warning">
+                            <i class="fa-solid fa-broom"></i>
+                            LIMPAR
+                        </button>
+                        <button id="exitBtn" class="btn btn-danger">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            SAIR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="card invoice-card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-receipt"></i>
+                            <h2 class="card-title">Prévia da Fatura</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="bill-area">
+                                <div class="bill-header">
+                                    <div class="bill-logo">
+                                        <i class="fa-solid fa-store"></i>
+                                    </div>
+                                    <div class="bill-title">FATURA
+                                        COMERCIAL</div>
+                                    <div class="bill-subtitle">Obrigado pela
+                                        preferência!</div>
+                                </div>
+
+                                <div id="billContent" class="bill-content">
+
+                                </div>
+                            </div>
+
+                            <div class="discount-tax-section">
+                                <h3>
+                                    <i class="fa-solid fa-tags"></i>
+                                    Descontos e Impostos
+                                </h3>
+                                <div class="discount-tax">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fa-solid fa-percent"></i>
+                                            Desconto (%)
+                                        </label>
+                                        <input type="number"
+                                            id="discountPercent"
+                                            class="form-control" min="0"
+                                            max="100" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fa-solid fa-landmark"></i>
+                                            Imposto (%)
+                                        </label>
+                                        <input type="number" id="taxPercent"
+                                            class="form-control" min="0"
+                                            max="100" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="applyDiscountTaxBtn"
+                                class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-calculator"></i>
+                                APLICAR DESCONTO/IMPOSTO
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card summary-card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <h2 class="card-title">Resumo Rápido</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <div class="summary-icon items-icon">
+                                        <i
+                                            class="fa-solid fa-boxes-stacked"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <div class="summary-value"
+                                            id="totalItems">0</div>
+                                        <div class="summary-label">Itens</div>
+                                    </div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-icon quantity-icon">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <div class="summary-value"
+                                            id="totalQuantity">0</div>
+                                        <div
+                                            class="summary-label">Quantidade</div>
+                                    </div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-icon subtotal-icon">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <div class="summary-value"
+                                            id="subtotalValue">R$ 0,00</div>
+                                        <div
+                                            class="summary-label">Subtotal</div>
+                                    </div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-icon total-icon">
+                                        <i
+                                            class="fa-solid fa-cash-register"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <div class="summary-value"
+                                            id="totalValue">R$ 0,00</div>
+                                        <div class="summary-label">Total</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>© 2025 Sistema de Faturamento Comercial - Todos os direitos
+                    reservados</p>
+                <p>Desenvolvido com <i class="fa-solid fa-heart"></i> para
+                    melhorar sua empresa</p>
+            </footer>
+        </div>
+
+        <div class="modal" id="confirmModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Confirmação</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    Tem certeza que deseja continuar?
+                </div>
+                <div class="modal-footer">
+                    <button id="modalCancel"
+                        class="btn btn-outline">Cancelar</button>
+                    <button id="modalConfirm"
+                        class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="successModal">
+            <div class="modal-content success-modal">
+                <div class="success-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 id="successTitle">Operação Concluída</h3>
+                <p id="successMessage">A operação foi concluída com sucesso!</p>
+                <button id="successOk" class="btn btn-success">OK</button>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
